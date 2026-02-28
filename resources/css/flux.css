@@ -1,5 +1,6 @@
 @source "../../flux-pro/stubs";
-@source "../stubs";
+/* @source "../stubs"; */
+@source "./stubs";
 
 @theme {
     --color-accent: var(--color-zinc-800);

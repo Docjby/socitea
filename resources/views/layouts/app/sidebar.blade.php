@@ -92,14 +92,13 @@
 
     <flux:header container class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700">
         <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
-        <flux:brand href="{{ route('feeds') }}" logo="{{ asset('logo.png') }}" name="SociTea"
+        <flux:brand href="{{ route('feeds') }}" logo="{{ asset('logo.png') }}" name="SocieTea"
             class="max-lg:hidden dark:hidden" />
-        <flux:brand href="{{ route('feeds') }}" logo="{{ asset('logo.png') }}" name="SociTea"
+        <flux:brand href="{{ route('feeds') }}" logo="{{ asset('logo.png') }}" name="SocieTea"
             class="max-lg:hidden! hidden dark:flex" />
         <flux:navbar class="-mb-px ml-5 max-lg:hidden">
             <flux:navbar.item icon="rss" :href="route('feeds')" :current="request()->routeIs('feeds')" wire:navigate>Drops</flux:navbar.item>
-            {{-- <flux:navbar.item icon="inbox" badge="12" href="#">Rules</flux:navbar.item> --}}
-            {{-- <flux:navbar.item icon="document-text" href="#">Documents</flux:navbar.item> --}}
+            
             <flux:navbar.item icon="megaphone" href="#">Announcement</flux:navbar.item>
             <flux:separator vertical variant="subtle" class="my-2" />
             <flux:dropdown class="max-lg:hidden">

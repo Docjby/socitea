@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FeedController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('feeds', 'feeds')
+Route::get('feeds', [FeedController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('feeds');
 
