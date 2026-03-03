@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Societea.</title>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    {{-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> --}}
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- Fonts -->
@@ -59,12 +59,12 @@
         class="flex-1 flex flex-col md:flex-row items-center justify-center md:justify-between min-h-0 w-full mt-4 md:mt-2 gap-4 md:gap-0">
 
         {{-- Left Text --}}
-        <div class="flex flex-col justify-center shrink-0 items-center md:items-start w-full md:w-auto">
-            <h1 class="text-[28vw] md:text-[22vw] lg:text-[18vw] font-black uppercase leading-[0.78] tracking-tighter m-0 p-0 text-zinc-200"
+        <div class="flex flex-col justify-center shrink-0 items-center md:items-start w-full md:w-auto animate-fade-in">
+            <h1 class="text-[28vw] md:text-[22vw] lg:text-[18vw] font-black uppercase leading-[0.78] tracking-tighter m-0 p-0 text-zinc-200 transition-all duration-700 ease-out animate-[fadeInLeft_0.8s_ease-out_both]"
                 style="font-family: ui-sans-serif, system-ui, sans-serif;">
                 SOCIE
             </h1>
-            <h1 class="text-[28vw] md:text-[22vw] lg:text-[18vw] font-black uppercase leading-[0.78] tracking-tighter m-0 p-0 text-zinc-200"
+            <h1 class="text-[28vw] md:text-[22vw] lg:text-[18vw] font-black uppercase leading-[0.78] tracking-tighter m-0 p-0 text-zinc-200 animate-[fadeInLeft_0.8s_ease-out_0.2s_both]"
                 style="font-family: ui-sans-serif, system-ui, sans-serif;">
                 TEA.
             </h1>
@@ -72,15 +72,17 @@
 
         {{-- Right Image --}}
         <div
-            class="w-full md:w-[35vw] h-[35vh] md:h-[55vh] lg:h-[57vh] rounded-3xl md:rounded-[3rem] overflow-hidden shrink-0">
+            class="w-full md:w-[35vw] h-[35vh] md:h-[55vh] lg:h-[57vh] rounded-3xl md:rounded-[3rem] overflow-hidden shrink-0 animate-[fadeInRight_0.8s_ease-out_0.3s_both]">
             <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=2070&auto=format&fit=crop"
-                alt="City street" class="w-full h-full object-cover grayscale contrast-125 brightness-90"
+                alt="City street"
+                class="w-full h-full object-cover grayscale contrast-125 brightness-90 transition-transform duration-700 hover:scale-105"
                 referrerpolicy="no-referrer" />
         </div>
 
     </main>
+
     {{-- Footer --}}
-    <footer class="w-full md:w-[60%] shrink-0 mt-6 md:mt-4">
+    <footer class="w-full md:w-[60%] shrink-0 mt-6 md:mt-4 animate-[fadeInUp_0.8s_ease-out_0.5s_both]">
         <p class="text-[10px] sm:text-xs md:text-sm opacity-80 leading-relaxed font-medium text-center md:text-left">
             An exclusive, anonymous network for the insiders. Spill the tea, share unverified rumors, and drop
             classified whispers without a trace. The truth is out there, but the source remains a secret. Welcome to the
@@ -88,8 +90,47 @@
         </p>
     </footer>
 
+    <style>
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
     {{-- @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif --}}
 </body>
+
 </html>

@@ -9,6 +9,9 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\URL;
 
+
+use Illuminate\Support\Facades\Log;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -16,9 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-      if (app()->environment('production')) {
-        URL::forceScheme('https');
-    }
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 
     /**
@@ -27,6 +30,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+        // if (config('app.debug')) {
+        //     DB::listen(function ($query) {
+        //         Log::info("Query: {$query->sql} | Time: {$query->time}ms");
+        //     });
+        // }
     }
 
     /**
@@ -40,14 +48,15 @@ class AppServiceProvider extends ServiceProvider
             app()->isProduction(),
         );
 
-        Password::defaults(fn (): ?Password => app()->isProduction()
-            ? Password::min(8)
+        Password::defaults(
+            fn(): ?Password => app()->isProduction()
+                ? Password::min(8)
                 ->mixedCase()
                 ->letters()
                 ->numbers()
                 ->symbols()
                 ->uncompromised()
-            : null
+                : null
         );
     }
 }

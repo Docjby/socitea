@@ -3,7 +3,7 @@
 
         <div class="flex items-center justify-between">
             <div>
-                <flux:heading size="xl" level="1">Good afternoon, {{ str(auth()->user()->name)->before(' ') }}
+                <flux:heading size="xl" level="1">Welcome Back, {{ str(auth()->user()->name)->before(' ') }}
                 </flux:heading>
                 <flux:text class="mt-2 mb-6 text-base">Here's what's new today</flux:text>
             </div>

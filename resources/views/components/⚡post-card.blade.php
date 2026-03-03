@@ -17,7 +17,19 @@ new class extends Component
             $this->post->reactions()->create(['user_id' => auth()->id()]);
         }
 
-        $this->post->refresh();
+        $this->post->load('reactions', 'comments');
+    }
+
+    public function getReactionCountProperty() {
+        return $this->post->reactions->count();
+    }
+
+    public function getCommentCountProperty() {
+        return $this->post->comments->count();
+    }
+
+    public function getIsUpvotedProperty() {
+        return $this->post->reactions->contains('user_id', auth()->id());
     }
 }; ?>
 
@@ -36,13 +48,13 @@ new class extends Component
             variant="ghost"
             icon="arrow-up"
             wire:click="toggleUpvote"
-            class="{{ $post->reactions()->where('user_id', auth()->id())->exists() ? 'text-blue-500' : '' }}"
+            class="{{ $this->isUpvoted ? 'text-blue-500' : '' }}"
         >
-            {{ $post->reactions()->count() }}
+            {{ $this->reactionCount }}
         </flux:button>
 
         <flux:button variant="ghost" icon="chat-bubble-left">
-            {{ $post->comments()->count() }}
+            {{ $this->commentCount }}
         </flux:button>
     </div>
 </div>
