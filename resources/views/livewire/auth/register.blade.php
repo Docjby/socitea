@@ -10,7 +10,7 @@
             <!-- Name -->
             <flux:input
                 name="name"
-                :label="__('Name')"
+                :label="__('Username')"
                 :value="old('name')"
                 type="text"
                 required
