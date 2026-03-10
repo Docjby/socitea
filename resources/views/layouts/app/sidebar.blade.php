@@ -30,12 +30,18 @@
                 </flux:navmenu>
             </flux:dropdown>
         </flux:navbar>
+
+        <flux:navbar class="-mb-px ml-5 lg:hidden">
+            <flux:navbar.item icon="rss" :href="route('feeds')" :current="request()->routeIs('feeds')"
+                wire:navigate></flux:navbar.item>
+            <flux:navbar.item icon="megaphone" :href="route('announcements')"
+                :current="request()->routeIs('announcements')" wire:navigate></flux:navbar.item>
+
+
+        </flux:navbar>
         <flux:spacer />
-        {{-- <flux:navbar class="me-4">
-            <flux:navbar.item icon="magnifying-glass" href="#" label="Search" />
-            <flux:navbar.item class="max-lg:hidden" icon="cog-6-tooth" href="#" label="Settings" />
-            <flux:navbar.item class="max-lg:hidden" icon="information-circle" href="#" label="Help" />
-        </flux:navbar> --}}
+
+        {{-- <flux:separator vertical variant="subtle" class="my-2" /> --}}
         <flux:dropdown position="top" align="start">
             <flux:profile :initials="auth()->user()->initials()" icon-trailing="chevron-down" />
             <flux:menu>
@@ -81,10 +87,10 @@
                 class="in-data-flux-sidebar-on-desktop:not-in-data-flux-sidebar-collapsed-desktop:-mr-2" />
         </flux:sidebar.header>
         <flux:sidebar.nav>
-            <flux:sidebar.item icon="rss" :href="route('feeds')" :current="request()->routeIs('feeds')"
+            {{-- <flux:sidebar.item icon="rss" :href="route('feeds')" :current="request()->routeIs('feeds')"
                 wire:navigate>Drops</flux:sidebar.item>
             <flux:sidebar.item icon="megaphone" :href="route('announcements')"
-                :current="request()->routeIs('announcements')" wire:navigate>Announcement</flux:sidebar.item>
+                :current="request()->routeIs('announcements')" wire:navigate>Announcement</flux:sidebar.item> --}}
             <flux:sidebar.group expandable heading="About" class="grid">
                 <flux:sidebar.item icon="clipboard-document-list" :href="route('rules')" wire:navigate>Rules
                 </flux:sidebar.item>
