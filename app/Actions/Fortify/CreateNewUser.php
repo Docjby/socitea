@@ -20,14 +20,24 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input): User
     {
         Validator::make($input, [
-            ...$this->profileRules(),
+            'email' => $this->emailRules(),
             'password' => $this->passwordRules(),
         ])->validate();
 
+
         return User::create([
-            'name' => $input['name'],
+            'username' => $this->generateUsername(),
             'email' => $input['email'],
             'password' => $input['password'],
         ]);
+    }
+
+    private function generateUsername(): string
+    {
+        do {
+            $username = 'unknown' . random_int(1000000, 9999999999);
+        } while (User::where('username', $username)->exists()); // ensure unique
+
+        return $username;
     }
 }

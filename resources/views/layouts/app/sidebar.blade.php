@@ -46,7 +46,7 @@
             <flux:profile :initials="auth()->user()->initials()" icon-trailing="chevron-down" />
             <flux:menu>
                 <flux:menu.radio.group>
-                    <flux:menu.radio checked>{{ auth()->user()->name }}</flux:menu.radio>
+                    <flux:menu.radio checked>{{ auth()->user()->username }}</flux:menu.radio>
                 </flux:menu.radio.group>
 
                 {{-- <flux:menu.separator /> --}}

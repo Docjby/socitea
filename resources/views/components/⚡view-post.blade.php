@@ -58,10 +58,10 @@ new class extends Component {
             <div class="flex items-center gap-2 mb-4">
                 <div
                     class="size-8 rounded-full bg-amber-400 dark:bg-amber-500 flex items-center justify-center text-white text-xs font-bold select-none">
-                  {{ $post->user->initial }}
+                  {{ $post->user->initials() }}
                 </div>
                 <div>
-                    <flux:text class="font-medium text-sm">{{ $post->user->name }}</flux:text>
+                    <flux:text class="font-medium text-sm">{{ $post->user->username }}</flux:text>
                     <flux:text class="text-xs text-zinc-400">{{ $post->created_at->diffForHumans() }}</flux:text>
                 </div>
             </div>

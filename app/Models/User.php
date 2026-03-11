@@ -20,9 +20,10 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'is_admin',
     ];
 
     /**
@@ -55,19 +56,13 @@ class User extends Authenticatable
      */
     public function initials(): string
     {
-        return Str::of($this->name)
-            ->explode(' ')
-            ->take(2)
-            ->map(fn($word) => Str::substr($word, 0, 1))
-            ->implode('');
+        $username = $this->username;
+
+        return Str::upper(Str::substr($username, 0, 1)) . Str::upper(Str::substr($username, -1, 1));
     }
 
-    public function getInitialAttribute(): string
+    public function isAdmin(): bool
     {
-        return Str::of($this->name)
-            ->explode(' ')
-            ->take(2)
-            ->map(fn($word) => Str::substr($word, 0, 1))
-            ->implode('');
+        return $this->is_admin;
     }
 }

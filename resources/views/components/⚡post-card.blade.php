@@ -25,10 +25,10 @@ new class extends Component {
         <div class="flex items-center justify-between gap-2">
             <div class="flex items-center gap-2 min-w-0">
                 <div
-                    class="shrink-0 size-6 rounded-full bg-amber-400 dark:bg-amber-500 flex items-center justify-center text-white text-[10px] font-bold select-none">
-                  {{ $post->user->initial }}
+                    class="shrink-0 size-8 rounded-full bg-amber-400 dark:bg-amber-500 flex items-center justify-center text-white font-bold select-none text-xs text-center">
+                    {{ $post->user->initials() }}
                 </div>
-                <flux:text size="sm" class="font-medium truncate">{{ $post->user->name }}</flux:text>
+                <flux:text size="md" class=" truncate">{{ $post->user->username }}</flux:text>
                 <flux:text size="sm" class="text-zinc-300 dark:text-zinc-700">·</flux:text>
                 <flux:text size="sm" class="text-zinc-400 whitespace-nowrap">
                     {{ $post->created_at->diffForHumans() }}

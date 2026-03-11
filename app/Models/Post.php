@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['user_id', 'title', 'content'];
+    protected $fillable = [
+        'user_id',
+        'title',
+        'content',
+        'views_count', // added
+    ];
 
     public function user()
     {
@@ -23,8 +28,8 @@ class Post extends Model
         return $this->hasMany(Reaction::class);
     }
 
-    public function posts()
+    public function views()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(PostView::class);
     }
 }
